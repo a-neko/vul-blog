@@ -10,47 +10,65 @@ router.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUnini
 router.use(passport.initialize());
 router.use(passport.session());
 router.get('/',(req,res,next)=>{
-
   res.render('login');
 })
 router.post('/', passport.authenticate('local', { failureRedirect: '/fail' }), function (req, res) {
-  res.redirect('blogs');
+  res.redirect('/blogs');
 });
 
+// passport.use(new LocalStrategy({
+//   // id, pw のそれぞれのinputのnameと合わせる
+//   usernameField: 'name',
+//   passwordField: 'password',
+//   session: true,
+//   passReqToCallback: false,
+// }, function (input_name, input_password, done) {
+//   const sql = `select * from user where name = '${input_name}'`
+//
+//   pool.query(sql).then((result)=>{
+//     const login_data = result[0];
+//     if (!login_data) return done(null, false, { message: 'account does not exist' })
+//     if (input_password == login_data.password) {
+//       return done(null, login_data)
+//     }else {
+//       return done(null, false, { message: 'wrong password' })
+//     }
+//     }
+//     // function (err, result) {
+//     //
+//     //   // login_data = result[0]
+//     //   if (err) return done(err)
+//     //   if (!login_data) return done(null, false, { message: 'account does not exist' })
+//     //   if (input_pw == login_data.pw) {
+//     //     return done(null, login_data)
+//     //   } else {
+//     //     return done(null, false, { message: 'wrong password' })
+//     //   }
+//     // }
+//     ).catch((error)=>console.log(error))
+// }));
+
 passport.use(new LocalStrategy({
-  // id, pw のそれぞれのinputのnameと合わせる
-  usernameField: 'name',
-  passwordField: 'password',
-  session: true,
-  passReqToCallback: false,
-}, function (input_name, input_password, done) {
-  const sql = `select * from user where name = '${input_name}'`
+      usernameField: 'name',
+      passwordField: 'password'
+    },
+  function(name, password, done) {
+      const sql=`select * from user where name='${name}'`;
+      pool.query(sql).then((data)=>{
+        const user_data=data[0][0];
 
-  pool.query(sql).then((result)=>{
-    const login_data = result[0];
-    if (!login_data) return done(null, false, { message: 'account does not exist' })
-    if (input_password == login_data.password) {
-      return done(null, login_data)
-    }else {
-      return done(null, false, { message: 'wrong password' })
-    }
-    }
-    // function (err, result) {
-    //
-    //   // login_data = result[0]
-    //   if (err) return done(err)
-    //   if (!login_data) return done(null, false, { message: 'account does not exist' })
-    //   if (input_pw == login_data.pw) {
-    //     return done(null, login_data)
-    //   } else {
-    //     return done(null, false, { message: 'wrong password' })
-    //   }
-    // }
-    ).catch((error)=>console.log(error))
-}));
+        if(user_data.password!=password){
+          return done(null, false, { message: 'ユーザー名およびパスワードが間違っています。' });
+        }
+        return done(null, user_data);
+      })
 
-passport.serializeUser(function (user, done) {
-  done(null, user.id)
+
+    })
+)
+;
+passport.serializeUser(function (user_data, done) {
+  done(null, user_data.id)
 });
 passport.deserializeUser(function (user_name_saved, done) {
   // ユーザーの情報をDBから探す
