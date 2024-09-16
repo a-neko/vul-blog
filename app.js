@@ -3,23 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const mysql = require("mysql2/promise");
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter=require('./routes/login');
+var blogsRouter =require('./routes/blogs');
 
 var app = express();
 
-const pool = mysql.createPool({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DB,
-  connectionLimit: 3, // 接続を張り続けるコネクション数を指定
-  namedPlaceholders: true, // 設定必須
-});
-module.exports=pool;
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,7 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/login',loginRouter);
+app.use('/login',loginRouter,blogsRouter);
+app.use('/blogs',blogsRouter);
 
 
 // catch 404 and forward to error handler
