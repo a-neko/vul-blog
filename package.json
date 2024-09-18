@@ -8,9 +8,16 @@
   "dependencies": {
     "cookie-parser": "~1.4.6",
     "debug": "~4.3.7",
+    "dotenv": "^16.4.5",
     "ejs": "~3.1.10",
     "express": "~4.21.0",
+    "express-session": "^1.18.0",
     "http-errors": "~2.0.0",
-    "morgan": "~1.10.0"
+    "install": "^0.13.0",
+    "morgan": "~1.10.0",
+    "mysql2": "^3.11.2",
+    "npm": "^10.8.3",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
   }
 }
