@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   signup(req,res,next);
-  res.redirect('/blogs');
 });
 
 module.exports = router;
