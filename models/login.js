@@ -9,6 +9,7 @@ function auth(){
         passwordField: 'password'
       },
       function(name, password, done) {
+        // sqlinjection
         const sql=`select * from user where name='${name}'`;
         pool.query(sql).then((data)=>{
           const user_data=data[0][0];
