@@ -7,16 +7,16 @@ const pool = require('../models/accessDB');
 const auth = require('../models/login')
 
 router.get('/', (req, res, next) => {
-
+  console.log(req.user)
   res.render('login');
 })
-router.post('/', passport.authenticate('local', {failureRedirect: '/login'}), function (req, res) {
+router.post('/',passport.authenticate('local',{failureRedirect:'/login',session:true}), function (req, res) {
 
   res.redirect('/blogs');
 });
 
 
-auth();
+
 
 module.exports = router;
 
