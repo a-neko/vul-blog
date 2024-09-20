@@ -3,11 +3,11 @@ const path=require('path');
 const fs = require('fs');
 function postBlog(req, res, next) {
   const userId = req.user[0].id;
-  const user = req.files;
+  const user = req.body;
   const path1 = req.files.eyecatch.path; // アップロードされたファイルのフルパス名
   const name = req.files.eyecatch.name;
-  console.log(path1);
-  console.log(name);
+
+
   if (path1) {
     const dest = path.dirname(path1).replace(/\\/g, "/") + "/" + name;
     fs.renameSync(path1, dest);  // 一時ファイル名を元のファイル名に変更する。
