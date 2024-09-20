@@ -1,16 +1,16 @@
-const express=require('express');
-const router=express.Router();
+const express = require('express');
+const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const pool = require('../models/accessDB');
-const auth=require('../models/login')
+const auth = require('../models/login')
 
-router.get('/',(req,res,next)=>{
+router.get('/', (req, res, next) => {
 
   res.render('login');
 })
-router.post('/', passport.authenticate('local', { failureRedirect: '/login'}), function (req, res) {
+router.post('/', passport.authenticate('local', {failureRedirect: '/login'}), function (req, res) {
 
   res.redirect('/blogs');
 });
@@ -18,5 +18,5 @@ router.post('/', passport.authenticate('local', { failureRedirect: '/login'}), f
 
 auth();
 
-module.exports=router;
+module.exports = router;
 

@@ -8,4 +8,4 @@ const pool = mysql.createPool({
   connectionLimit: 3, // 接続を張り続けるコネクション数を指定
   namedPlaceholders: true, // 設定必須
 });
-module.exports=pool;
+module.exports = pool;

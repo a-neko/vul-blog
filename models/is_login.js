@@ -8,4 +8,4 @@ function is_login(req, res, next) {
   }
 }
 
-module.exports=is_login;
+module.exports = is_login;
