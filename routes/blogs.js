@@ -25,7 +25,7 @@ router.get('/post', is_login, function (req, res, next) {
 router.post('/post', is_login, function (req, res, next) {
 
   postBlog(req, res, next);
-  res.redirect('blogs/blogs')
+  res.redirect('/blogs')
 });
 
 module.exports = router;

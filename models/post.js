@@ -13,7 +13,7 @@ function postBlog(req, res, next) {
     fs.renameSync(path1, dest);  // 一時ファイル名を元のファイル名に変更する。
     console.log(`${name}は${path1}に移動しました`)
   }
-  const sql = `insert into blog (userId,title,content,eyecatch,createdAt) values (${userId},'${user.title}','${user.content}',${req.files.eyecatch.name},cast(now() as datetime))`
+  const sql = `insert into blog (userId,title,content,eyecatch,createdAt) values (${userId},'${user.title}','${user.content}','${req.files.eyecatch.name}',cast(now() as datetime))`
   pool.query(sql).then(() => console.log('created new blog!'))
 }
 
