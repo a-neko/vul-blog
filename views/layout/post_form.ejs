@@ -1,14 +1,14 @@
 <div style="width: 600px;height: 700px;margin: 0 auto;padding: 20px;background-color: #ffffff;border: 1px solid #ccc;border-radius: 5px;margin-top: 80px">
-    <form style="text-align: center" method="POST" action="/blogs/post" same>
+    <form style="text-align: center" method="POST" action="/blogs/post" enctype="multipart/form-data">
 
         <p style="float: left;padding-left: 20px;font-size: 24px;">title</p>
         <input type="text" placeholder=""
                style="width: 93%;padding: 10px;margin-bottom: 10px;border: 1px solid #ccc;border-radius: 4px;"
-               name="title"/>
+               name="title" id="title"/>
         <p style="float: left;padding-left: 20px;font-size: 24px;">eyecatch</p>
         <input type="file" placeholder=""
                style="width: 93%;padding: 10px;margin-bottom: 10px;border: 1px solid #ccc;border-radius: 4px;"
-               name="eyecatch" accept="image/png,image/jpeg"/>
+               name="eyecatch" id="eyecatch" accept="image/png,image/jpeg"/>
         <label style="float: left;padding-left: 20px;font-size: 24px;padding-bottom: 20px" for="content">content</label>
         <textarea id="content" name="content" style="resize: vertical;width: 93%;height: 300px"></textarea>
         <div style="padding-top: 20px">
