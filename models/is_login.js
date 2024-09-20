@@ -1,6 +1,6 @@
 function is_login(req, res, next) {
-  if (req.session.passport.user) {
-    console.log(req.session.passport)
+  if (req.user) {
+    console.log(req.user)
     // loginした状態なら、通す
     next()
   } else {
