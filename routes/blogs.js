@@ -8,7 +8,7 @@ const postBlog = require('../models/post');
 const getUserId=require('../models/getUserId');
 
 router.get('/', is_login, function (req, res, next) {
-  const userId=getUserId(req,res,next);
+
 
   getAllBlogs(req, res, next);
 
@@ -23,7 +23,6 @@ router.get('/post', is_login, function (req, res, next) {
 });
 
 router.post('/post', is_login, function (req, res, next) {
-  // const userId=getUserId();
 
   postBlog(req, res, next);
   res.redirect('blogs/blogs')
