@@ -4,7 +4,7 @@ function is_login(req, res, next) {
     next()
   } else {
     // loginしてないならこのページに飛ばす
-    res.redirect('login')
+    res.redirect('/login')
   }
 }
 

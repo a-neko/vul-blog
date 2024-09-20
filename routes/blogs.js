@@ -12,4 +12,11 @@ router.get('/',is_login,function(req, res, next) {
 
 });
 
+router.get('/post',is_login,function(req, res, next) {
+
+  res.render('blogs/post')
+
+
+});
+
 module.exports = router;
