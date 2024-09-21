@@ -6,12 +6,12 @@ var logger = require('morgan');
 require('dotenv').config();
 
 
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var blogsRouter = require('./routes/blogs');
 var signupRouter = require('./routes/signup');
+var adminRouter = require('./routes/admin');
 const session = require("express-session");
 const passport = require("passport");
 const {Strategy: LocalStrategy} = require("passport-local");
@@ -22,7 +22,7 @@ var app = express();
 
 const formData = require('express-form-data');
 const updir = path.dirname(__dirname).replace(/\\/g, "/") + "/sakura/public/images"; // アップロード先のフォルダ
-app.use(formData.parse({uploadDir:updir, autoClean:true}));
+app.use(formData.parse({uploadDir: updir, autoClean: true}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -41,6 +41,7 @@ app.use('/users', usersRouter);
 app.use('/login', loginRouter, blogsRouter);
 app.use('/blogs', blogsRouter);
 app.use('/signup', signupRouter);
+app.use('/admin', adminRouter);
 
 
 // catch 404 and forward to error handler

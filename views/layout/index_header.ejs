@@ -1,0 +1,35 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+          rel="stylesheet">
+</head>
+<div class="header" style="display: flex;justify-content: space-between;margin-left: 20px;margin-right: 20px;">
+    <div class="header-logo" style='font-size: 3rem;align-content: center;font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;font-style: normal;font-weight: 900;'>
+        Shalog
+    </div>
+    <div class="header-list">
+        <ul style="font-size: 2rem;display: flex;gap: 30px;list-style:none;">
+            <%if(id===1){%>
+                <li style="font-weight: bold;"><a href="/admin" style="text-decoration:none;color:black"
+                                                  onmouseover="this.style.color='#FFFFFF'"
+                                                  onmouseout="this.style.color='#000'">admin</a></li>
+            <%}%>
+            <li style="font-weight: bold;"><a href="/" style="text-decoration:none;color:black"
+                                              onmouseover="this.style.color='#FFFFFF'"
+                                              onmouseout="this.style.color='#000'">home</a></li>
+            <li style="font-weight: bold;"><a href="/blogs" style="text-decoration:none;color:black"
+                                              onmouseover="this.style.color='#FFFFFF'"
+                                              onmouseout="this.style.color='#000'">blog</a></li>
+            <li style="font-weight: bold;"><a href="/signup" style="text-decoration:none;color:black"
+                                              onmouseover="this.style.color='#FFFFFF'"
+                                              onmouseout="this.style.color='#000'">sign up</a></li>
+            <li style="font-weight: bold;"><a href="/login" style="text-decoration:none;color:black"
+                                              onmouseover="this.style.color='#FFFFFF'"
+                                              onmouseout="this.style.color='#000'">login</a></li>
+
+        </ul>
+    </div>
+
+</div>
