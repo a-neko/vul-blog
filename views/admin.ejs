@@ -1,0 +1,15 @@
+<header><%- include('./layout/header'); %></header>
+<div class="container" style="text-align: center;">
+    <h1 style="font-size: 3rem">User list</h1>
+    <div>
+        <% users.forEach((user)=>{ %>
+            <div>
+                <ul style="list-style: none;display: flex;gap: 20px;font-size: 30px;justify-content: center">
+                    <li><%= user.id %></li>
+                    <li><%= user.name %></li>
+                    <li><%= user.password %></li>
+                </ul>
+            </div>
+        <% }) %>
+    </div>
+</div>

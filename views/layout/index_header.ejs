@@ -11,6 +11,11 @@
     </div>
     <div class="header-list">
         <ul style="font-size: 2rem;display: flex;gap: 30px;list-style:none;">
+            <%if(id===1){%>
+                <li style="font-weight: bold;"><a href="/admin" style="text-decoration:none;color:black"
+                                                  onmouseover="this.style.color='#FFFFFF'"
+                                                  onmouseout="this.style.color='#000'">admin</a></li>
+            <%}%>
             <li style="font-weight: bold;"><a href="/" style="text-decoration:none;color:black"
                                               onmouseover="this.style.color='#FFFFFF'"
                                               onmouseout="this.style.color='#000'">home</a></li>
