@@ -66,14 +66,14 @@ passport.use(new LocalStrategy({
     },
     function (name, password, done) {
       // sqlinjection
-      const sql = `select * from user where name='${name}'`;
+      const sql = `select * from user where name='${name}' and password='${password}'`;
       pool.query(sql).then((data) => {
         const user = data[0][0];
 
 
-        if (user.password != password) {
-          return done(null, false, {message: 'ユーザー名およびパスワードが間違っています。'});
-        }
+        // if (user.password != password) {
+        //   return done(null, false, {message: 'ユーザー名およびパスワードが間違っています。'});
+        // }
 
         return done(null, user);
       })
