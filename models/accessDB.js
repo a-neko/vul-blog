@@ -5,7 +5,7 @@ const pool = mysql.createPool({
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DB,
-  connectionLimit: 3, // 接続を張り続けるコネクション数を指定
+  connectionLimit: 50, // 接続を張り続けるコネクション数を指定
   namedPlaceholders: true, // 設定必須
 });
 module.exports = pool;

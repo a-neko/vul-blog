@@ -67,6 +67,11 @@ passport.use(new LocalStrategy({
     function (name, password, done) {
       // sqlinjection
       const sql = `select * from user where name='${name}' and password='${password}'`;
+      if (sql.includes(":")) {
+        return done(null, false)
+      }
+
+
       pool.query(sql).then((data) => {
         const user = data[0][0];
 
@@ -76,7 +81,7 @@ passport.use(new LocalStrategy({
         // }
 
         return done(null, user);
-      })
+      }).catch((err)=>console.log(err));
 
 
     })
