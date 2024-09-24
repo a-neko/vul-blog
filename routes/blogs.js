@@ -8,11 +8,7 @@ const postBlog = require('../models/post');
 const getUserId=require('../models/getUserId');
 const getPostData=require('../models/getPostData')
 router.get('/', is_login, function (req, res, next) {
-
-
   getAllBlogs(req, res, next);
-
-
 });
 
 router.get('/post', is_login, function (req, res, next) {
