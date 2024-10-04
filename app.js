@@ -21,7 +21,6 @@ const pool = require("./models/accessDB");
 var app = express();
 
 const formData = require('express-form-data');
-const {httpOnly} = require("express-session/session/cookie");
 const updir = path.dirname(__dirname).replace(/\\/g, "/") + "/sakura/public/images"; // アップロード先のフォルダ
 app.use(formData.parse({uploadDir: updir, autoClean: true}));
 // view engine setup
@@ -34,7 +33,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: false,cookie: {httpOnly:false}}));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: false,
+  cookie: {httpOnly: false}
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', indexRouter);
@@ -82,7 +86,7 @@ passport.use(new LocalStrategy({
         // }
 
         return done(null, user);
-      }).catch((err)=>console.log(err));
+      }).catch((err) => console.log(err));
 
 
     })
